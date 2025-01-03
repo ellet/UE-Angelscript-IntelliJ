@@ -13,13 +13,16 @@ import com.github.ellet.ueangelscriptintellij.services.MyProjectService
 import javax.swing.JButton
 
 
-class MyToolWindowFactory : ToolWindowFactory {
+class MyToolWindowFactory : ToolWindowFactory
+{
 
-    init {
+    init
+    {
         thisLogger().warn("Don't forget to remove all non-needed sample code files with their corresponding registration entries in `plugin.xml`.")
     }
 
-    override fun createToolWindowContent(project: Project, toolWindow: ToolWindow) {
+    override fun createToolWindowContent(project: Project, toolWindow: ToolWindow)
+    {
         val myToolWindow = MyToolWindow(toolWindow)
         val content = ContentFactory.getInstance().createContent(myToolWindow.getContent(), null, false)
         toolWindow.contentManager.addContent(content)
@@ -27,7 +30,8 @@ class MyToolWindowFactory : ToolWindowFactory {
 
     override fun shouldBeAvailable(project: Project) = true
 
-    class MyToolWindow(toolWindow: ToolWindow) {
+    class MyToolWindow(toolWindow: ToolWindow)
+    {
 
         private val service = toolWindow.project.service<MyProjectService>()
 
@@ -35,7 +39,8 @@ class MyToolWindowFactory : ToolWindowFactory {
             val label = JBLabel(MyBundle.message("randomLabel", "?"))
 
             add(label)
-            add(JButton(MyBundle.message("shuffle")).apply {
+            add(JButton(MyBundle.message("shuffle")).apply
+            {
                 addActionListener {
                     label.text = MyBundle.message("randomLabel", service.getRandomNumber())
                 }

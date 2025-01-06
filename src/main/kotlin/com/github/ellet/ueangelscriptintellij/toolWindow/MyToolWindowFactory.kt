@@ -15,7 +15,6 @@ import javax.swing.JButton
 
 class MyToolWindowFactory : ToolWindowFactory
 {
-
     init
     {
         thisLogger().warn("Don't forget to remove all non-needed sample code files with their corresponding registration entries in `plugin.xml`.")
@@ -32,7 +31,6 @@ class MyToolWindowFactory : ToolWindowFactory
 
     class MyToolWindow(toolWindow: ToolWindow)
     {
-
         private val service = toolWindow.project.service<MyProjectService>()
 
         fun getContent() = JBPanel<JBPanel<*>>().apply {
